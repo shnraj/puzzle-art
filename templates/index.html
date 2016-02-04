@@ -1,0 +1,12 @@
+<!doctype html>
+<head>
+    <title>Morse Code</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='puzzle-art.css') }}"/>
+</head>
+<body>
+    <h1>Enter message to encode:</h1>
+    <form action="." method="POST">
+        <input type="text" name="text">
+        <input type="submit" name="my-form" value="Send">
+    </form>
+</body>
