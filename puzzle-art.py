@@ -35,8 +35,9 @@ def main_form_post():
 def morse(msg):
     morse = ''
     for char in msg:
-        morse += MORSE_CODE[char.upper()] + ' '
-    return render_template('puzzle-art.html', msg=msg, morse_msg=morse.strip())
+        morse += MORSE_CODE.get(char.upper(), char) + ' '
+    return render_template('puzzle-art.html', msg=msg.strip(),
+                           morse_msg=morse.strip())
 
 
 if __name__ == "__main__":
