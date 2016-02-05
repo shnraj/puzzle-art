@@ -1,0 +1,42 @@
+body {
+  font-family: 'Blanch', sans-serif;
+  font-size: 50px;
+  font-weight: 200;
+  margin: 0;
+  padding: 0; }
+  body h1 {
+    font-family: 'Blanch', sans-serif;
+    font-size: 90px;
+    margin: 0; }
+  body .content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Blanch', sans-serif;
+    font-weight: 200;
+    justify-content: center;
+    margin: 100px; }
+    body .content .message {
+      font-family: monospace;
+      font-size: 50%;
+      margin: 50px;
+      white-space: pre; }
+    body .content form {
+      margin: 50px; }
+    body .content input[type=text],
+    body .content input[type=submit],
+    body .content .button {
+      border: 1px solid gray;
+      font-family: 'Blanch', sans-serif;
+      font-weight: 200;
+      font-size: 50px;
+      outline: 0;
+      padding: 5px 15px; }
+    body .content input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px white inset; }
+
+@font-face {
+  font-family: Blanch;
+  src: url("../fonts/BlanchLight.otf"); }
+
+/*# sourceMappingURL=style.css.map */
