@@ -20,7 +20,7 @@ body {
       font-family: monospace;
       font-size: 50%;
       margin: 50px;
-      white-space: pre; }
+      white-space: pre-wrap; }
     body .content form {
       margin: 50px; }
     body .content input[type=text],

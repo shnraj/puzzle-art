@@ -5,12 +5,13 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/d3.min.js') }}"></script>
     <script type="text/javascript">
         function circlesWithinCircles() {
+            var width = 1000;
             var data = {{ arr }};
 
             var svgContainer = d3.select("#art")
                                 .append("svg")
-                                .attr("width", 800)
-                                .attr("height", 80);
+                                .attr("width", width)
+                                .attr("height", 200);
 
             var squares = svgContainer.selectAll("rect")
                                       .data(data)
@@ -19,8 +20,12 @@
 
 
             // d represents the current data point, and i the current index
+            var lineLimit = Math.floor((width - 10)/14);
             var squareAttr = squares.attr("x", function(d, i) {
-                                    return 14 * i;
+                                    return 14 * (i%lineLimit);
+                                })
+                                .attr("y", function(d, i) {
+                                    return 14 * Math.floor(i/lineLimit);
                                 })
                                 .attr("width", 10)
                                 .attr("height", 10)
