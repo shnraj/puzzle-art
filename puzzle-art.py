@@ -36,8 +36,17 @@ def morse(msg):
     morse = ''
     for char in msg:
         morse += MORSE_CODE.get(char.upper(), char) + ' '
+
+    msg_arr = []
+    for char in morse.strip():
+        if char == '.':
+            msg_arr.append(0)
+        elif char == '-':
+            msg_arr.append(1)
+        elif char == ' ':
+            msg_arr.append(2)
     return render_template('puzzle-art.html', msg=msg.strip(),
-                           morse_msg=morse.strip())
+                           morse_msg=morse.strip(), arr=msg_arr)
 
 
 if __name__ == "__main__":

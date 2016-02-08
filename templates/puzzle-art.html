@@ -2,12 +2,48 @@
 <head>
     <title>Morse Code</title>
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/d3.min.js') }}"></script>
+    <script type="text/javascript">
+        function circlesWithinCircles() {
+            var data = {{ arr }};
+
+            var svgContainer = d3.select("#art")
+                                .append("svg")
+                                .attr("width", 800)
+                                .attr("height", 80);
+
+            var squares = svgContainer.selectAll("rect")
+                                      .data(data)
+                                      .enter()
+                                      .append("rect");
+
+
+            // d represents the current data point, and i the current index
+            var squareAttr = squares.attr("x", function(d, i) {
+                                    return 14 * i;
+                                })
+                                .attr("width", 10)
+                                .attr("height", 10)
+                                .style("fill", function(d) {
+                                var returnColor;
+                                    if (d === 0) { returnColor = "green";
+                                    } else if (d === 1) { returnColor = "purple";
+                                    } else if (d === 2) { returnColor = "red"; }
+                                    return returnColor;
+                                });
+        }
+    </script>
 </head>
 <body>
     <div class="content">
         {# Using pre tag to show multiple spaces between words:
            http://stackoverflow.com/questions/433493/why-do-multiple-spaces-in-an-html-file-show-up-as-single-spaces-in-the-browser #}
-           <div>{{ msg }}</div>
-           <div class="message">{{ morse_msg }}</div>
+        <div>{{ msg }}</div>
+        <div class="message">{{ morse_msg }}</div>
+        <div id="art"> </div>
+        <p>
+            <button onclick="circlesWithinCircles()">Art</button>
+        </p>
     </div>
 </body>
+</html>
