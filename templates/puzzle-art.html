@@ -6,6 +6,7 @@
     <script type="text/javascript">
         function morseSquares() {
             var width = 1000;
+            var blues = {0: "#45ADA8", 1: "#547980", 2: "#9DE0AD"};
             var data = {{ arr }};
 
             var svgContainer = d3.select("#art")
@@ -30,22 +31,19 @@
                                 .attr("width", 10)
                                 .attr("height", 10)
                                 .style("fill", function(d) {
-                                var returnColor;
-                                    if (d === 0) { returnColor = "#45ADA8";
-                                    } else if (d === 1) { returnColor = "#547980";
-                                    } else if (d === 2) { returnColor = "#9DE0AD"; }
-                                    return returnColor;
+                                    return blues[d];
                                 });
         }
 
         function morseCircles() {
             var width = 1000;
+            var blues = {0: "#45ADA8", 1: "#547980", 2: "#9DE0AD"};
             var data = {{ arr }};
 
             var svgContainer = d3.select("#art")
                                 .append("svg")
                                 .attr("width", width)
-                                .attr("height", 800);
+                                .attr("height", 400);
 
             var circles = svgContainer.selectAll("circle")
                                       .data(data)
@@ -63,11 +61,7 @@
                                 })
                                 .attr("r", 5)
                                 .style("fill", function(d) {
-                                var returnColor;
-                                    if (d === 0) { returnColor = "#45ADA8";
-                                    } else if (d === 1) { returnColor = "#547980";
-                                    } else if (d === 2) { returnColor = "#9DE0AD"; }
-                                    return returnColor;
+                                    return blues[d];
                                 });
         }
     </script>
@@ -80,7 +74,7 @@
         <div class="message">{{ morse_msg }}</div>
         <div id="art"> </div>
         <p>
-            <button onclick="morseSquares()">Art</button>
+            <button onclick="morseSquares()">Squares</button>
             <button onclick="morseCircles()">Circles</button>
         </p>
     </div>

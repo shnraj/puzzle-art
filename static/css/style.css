@@ -34,6 +34,8 @@ body {
       padding: 5px 15px; }
     body .content input:-webkit-autofill {
       -webkit-box-shadow: 0 0 0px 1000px white inset; }
+    body .content #art {
+      text-align: center; }
 
 @font-face {
   font-family: Blanch;
