@@ -104,5 +104,16 @@ def alphabet(msg):
                            arr=alphabet_nums)
 
 
+@app.route('/barcode/<msg>')
+def barcode(msg):
+    barcode_nums = []
+    for char in msg:
+        barcode_nums.extend(BARCODE.get(char.upper(), char))
+
+    return render_template('puzzle-art.html', msg=msg.strip(),
+                           puzzle_msg=' '.join(str(e) for e in barcode_nums),
+                           arr=barcode_nums)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
