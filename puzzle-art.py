@@ -73,6 +73,9 @@ def main_form_post():
     if request.form['submit'] == 'Go Alphabet':
         alphabet_text = request.form['alphabet_text']
         return alphabet(alphabet_text)
+    if request.form['submit'] == 'Go Barcode':
+        barcode_text = request.form['barcode_text']
+        return barcode(barcode_text)
 
 
 @app.route('/morse/<msg>')
