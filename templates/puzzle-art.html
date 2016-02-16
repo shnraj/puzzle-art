@@ -64,6 +64,40 @@
                                     return blues[d];
                                 });
         }
+
+        function barcode() {
+            var width = 1000;
+            var blues = {0: "#45ADA8", 1: "#547980", 2: "#9DE0AD"};
+            var data = {{ arr }};
+
+            var svgContainer = d3.select("#art")
+                                .append("svg")
+                                .attr("width", width)
+                                .attr("height", 400);
+
+            var squares = svgContainer.selectAll("rect")
+                                      .data(data)
+                                      .enter()
+                                      .append("rect");
+
+
+            // d represents the current data point, and i the current index
+            var lineLimit = Math.floor((width - 10)/10);
+            var squareAttr = squares.attr("x", function(d, i) {
+                                    return 10 * (i%lineLimit);
+                                })
+                                .attr("y", function(d, i) {
+                                    return 10 * Math.floor(i/lineLimit);
+                                })
+                                .attr("width", function(d) {
+                                    return d*2;
+                                })
+                                .attr("height", 60)
+                                .style("fill", function(d) {
+                                    return blues[d];
+                                });
+        }
+
     </script>
 </head>
 <body>
@@ -76,6 +110,7 @@
         <p>
             <button onclick="morseSquares()">Squares</button>
             <button onclick="morseCircles()">Circles</button>
+            <button onclick="barcode()">Barcode</button>
         </p>
     </div>
 </body>
