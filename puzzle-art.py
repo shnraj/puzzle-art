@@ -118,5 +118,15 @@ def barcode(msg):
                            arr=barcode_nums)
 
 
+@app.route('/circle/<msg>')
+def circle(msg):
+    links = []
+    for i in range(0, len(msg)-1):
+        if msg[i] != ' ' and msg[i+1] != ' ':
+            links.append({"source": ALPHABET.get(msg[i].upper()) - 1,
+                          "target": ALPHABET.get(msg[i+1].upper()) - 1})
+    return ' '.join(str(e) for e in links)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
